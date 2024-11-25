@@ -1,2 +1,2 @@
 query: glucose-6-phosphatase[protein] AND aves[Organism]
-96 sequences found96 sequences used for furter analysis. They are saved in con_an_seq_out.fasta
+96 sequences found
