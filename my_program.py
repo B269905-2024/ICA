@@ -33,7 +33,7 @@ def valid_number(top_num):
 
 
 def add_line(line):
-    """"adds a line to results.txt, s_count = print(line) has to be specified before"""
+    """"adds a line to results.txt"""
     with open("results.txt", "a") as file:
                 file.write(line)
 
@@ -45,13 +45,13 @@ a = True # outer loop to be able to re-enter protein family and taxonomic group
 while a:
     #get user input - protein family and taxonomic group
     print('Please enter the protein family e.g. glucose-6-phosphatase')
-    #prot_fam = input()
-    prot_fam = 'glucose-6-phosphatase'
+    prot_fam = input()
+    #prot_fam = 'glucose-6-phosphatase'
     prot_fam = prot_fam.lower()
 
     print('Please enter the taxonomic group e.g. Aves')
-    #tax_gr = input()
-    tax_gr = 'Aves'
+    tax_gr = input()
+    #tax_gr = 'Aves'
     tax_gr = tax_gr.lower()
 
     print(f'You chose {prot_fam} in {tax_gr}')
@@ -357,10 +357,13 @@ with open("results.txt", "r") as file:
 pdf.ln(10)
 pdf.cell(0, 10, f"Similarity plot of Aligned Sequences of {prot_fam} in {tax_gr}", ln=True)
 pdf.image("plotcon.1.png", x=10, y=pdf.get_y() + 10, w=100)
+pdf.ln(110)
 
 
 #blastp
 pdf.cell(0, 10, "BlastP results:", ln=True)
+pdf.cell(0, 10, "QueryID\tSubjectID\t%Identity\tAligment_Len\tMispatches\tGapOpenings\nQ_start\tQ_end\tS_Start\tS_end\tE-value\tBit_Score", ln=True)
+
 with open("blastp_con_an_deq.txt", "r") as file:
     text = file.read()
     pdf.multi_cell(0, 10, text)
